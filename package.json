@@ -1,0 +1,10 @@
+{
+  "name": "daniel-egunjobi-brand-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "echo 'Static site ready in dist'",
+    "dev": "python3 -m http.server 4173 --directory dist"
+  }
+}

@@ -146,6 +146,11 @@ h1 {
 	padding: 4rem 0;
 }
 
+#research {
+	display: grid;
+	gap: 1rem;
+}
+
 .card-grid {
 	display: grid;
 	gap: 1rem;

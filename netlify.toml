@@ -12,6 +12,11 @@
     Link = "</sitemap.xml>; rel=\"sitemap\""
 
 [[headers]]
+  for = "/"
+  [headers.values]
+    Link = "<https://luoancestralcovenant.org/>; rel=\"canonical\", </sitemap.xml>; rel=\"sitemap\""
+
+[[headers]]
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"

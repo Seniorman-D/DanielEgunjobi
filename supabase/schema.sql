@@ -7,50 +7,32 @@ create table if not exists public.profiles (
   created_at timestamptz not null default now()
 );
 
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  insert into public.profiles (id, full_name) values (new.id, coalesce(new.raw_user_meta_data->>'full_name', new.email)) on conflict (id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+after insert on auth.users
+for each row execute procedure public.handle_new_user();
+
 create table if not exists public.products (
-  id uuid primary key default gen_random_uuid(),
-  slug text not null unique,
-  name text not null,
-  category text,
-  description text not null,
-  price numeric(12,2),
-  currency text not null default 'KES',
-  image text,
-  is_active boolean not null default true,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  id uuid primary key default gen_random_uuid(), slug text not null unique, name text not null, category text, description text not null, price numeric(12,2), currency text not null default 'KES', image text, is_active boolean not null default true, created_at timestamptz not null default now(), updated_at timestamptz not null default now()
 );
 
 create table if not exists public.orders (
-  id uuid primary key default gen_random_uuid(),
-  order_number text not null unique,
-  customer_id uuid references auth.users(id) on delete set null,
-  customer_name text not null,
-  customer_email text,
-  customer_phone text not null,
-  delivery_address text,
-  notes text,
-  subtotal numeric(12,2) not null default 0,
-  shipping_fee numeric(12,2) not null default 0,
-  total_amount numeric(12,2) not null default 0,
-  currency text not null default 'KES',
-  payment_status text not null default 'quote_required' check (payment_status in ('quote_required','unpaid','pending','paid','failed','refunded')),
-  payment_provider text,
-  payment_reference text,
-  payment_tracking_id text,
-  order_status text not null default 'new' check (order_status in ('new','confirmed','processing','shipped','delivered','completed','cancelled','refunded')),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  id uuid primary key default gen_random_uuid(), order_number text not null unique, customer_id uuid references auth.users(id) on delete set null, customer_name text not null, customer_email text, customer_phone text not null, delivery_address text, notes text, subtotal numeric(12,2) not null default 0, shipping_fee numeric(12,2) not null default 0, total_amount numeric(12,2) not null default 0, currency text not null default 'KES', payment_status text not null default 'quote_required' check (payment_status in ('quote_required','unpaid','pending','paid','failed','refunded')), payment_provider text, payment_reference text, payment_tracking_id text, order_status text not null default 'new' check (order_status in ('new','confirmed','processing','shipped','delivered','completed','cancelled','refunded')), created_at timestamptz not null default now(), updated_at timestamptz not null default now()
 );
 
 create table if not exists public.order_items (
-  id uuid primary key default gen_random_uuid(),
-  order_id uuid not null references public.orders(id) on delete cascade,
-  product_id uuid references public.products(id) on delete set null,
-  name text not null,
-  quantity integer not null check (quantity > 0 and quantity <= 99),
-  unit_price numeric(12,2),
-  created_at timestamptz not null default now()
+  id uuid primary key default gen_random_uuid(), order_id uuid not null references public.orders(id) on delete cascade, product_id uuid references public.products(id) on delete set null, name text not null, quantity integer not null check (quantity > 0 and quantity <= 99), unit_price numeric(12,2), created_at timestamptz not null default now()
 );
 
 create index if not exists orders_created_at_idx on public.orders(created_at desc);
@@ -63,7 +45,6 @@ alter table public.products enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
 
--- Public catalogue is readable; all order writes are performed server-side.
 drop policy if exists "Public can read active products" on public.products;
 create policy "Public can read active products" on public.products for select using (is_active = true);
 
@@ -80,5 +61,5 @@ insert into public.products (slug,name,category,description,image) values
 ('fibroids-support','Fibroids Support','Women’s Traditional Preparation','Traditional herbal preparation presented around womb wellness, feminine balance and reproductive well-being.','/images/fibroids-support.jpg')
 on conflict (slug) do update set name=excluded.name,category=excluded.category,description=excluded.description,image=excluded.image,updated_at=now();
 
--- Make this user an administrator after creating the account in Supabase Auth:
+-- After creating the administrator in Supabase Auth, promote that account:
 -- update public.profiles set role='admin' where id='YOUR-AUTH-USER-UUID';

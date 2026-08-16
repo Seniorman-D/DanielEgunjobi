@@ -1,3 +1,19 @@
 Backend implementation completed on branch luo-ancestral-covenant.
 
-Included: order API, payment API, PesaPal IPN/status verification, admin authentication, admin order dashboard, Supabase schema, checkout UI, payment callback/cancel pages, email and WhatsApp hooks, environment variable template, setup guide.
+Included:
+- Product catalogue API
+- Ten requested traditional products/services with descriptions
+- Price-on-request support
+- Admin product/service creation
+- Admin pricing and visibility controls
+- Order API and order management
+- PesaPal API 3.0 payment flow
+- PesaPal IPN and transaction-status verification
+- Admin authentication and protected dashboard
+- Customer/admin email hooks
+- WhatsApp order and fulfilment notification hooks
+- Supabase schema and product seed data
+- Checkout UI and payment callback/cancel pages
+- Environment variable template and backend setup guide
+
+Live credentials are intentionally not committed. Configure Supabase, PesaPal, email and WhatsApp credentials in Netlify environment variables before production payment testing.

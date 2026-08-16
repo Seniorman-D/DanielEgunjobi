@@ -1,0 +1,3 @@
+Backend implementation completed on branch luo-ancestral-covenant.
+
+Included: order API, payment API, PesaPal IPN/status verification, admin authentication, admin order dashboard, Supabase schema, checkout UI, payment callback/cancel pages, email and WhatsApp hooks, environment variable template, setup guide.

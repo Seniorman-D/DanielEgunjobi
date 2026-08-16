@@ -36,3 +36,7 @@ function go(i){current=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.c
 $('#prev').onclick=()=>go(current-1);$('#next').onclick=()=>go(current+1);go(0);
 $('#newsletterForm').onsubmit=e=>{e.preventDefault();toast('Thank you for joining the Covenant community.');e.target.reset()};
 $('#contactForm').onsubmit=e=>{e.preventDefault();toast('Thank you. Your message has been received.');e.target.reset()};
+
+// Keep the copyright year current automatically.
+const copyright=document.querySelector('.copyright');
+if(copyright){copyright.textContent=`© ${new Date().getFullYear()} Luo Ancestral Covenant | All rights reserved | Designed by Kidani Media`}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /payment-callback.html
+Disallow: /payment-cancelled.html
+
+Sitemap: https://luoancestralcovenant.org/sitemap.xml

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background: #050505;
+  color: white;
+}
+
+body {
+  background: #050505;
+  color: white;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.gold-glow {
+  box-shadow: 0 0 30px rgba(212,175,55,0.35);
+}

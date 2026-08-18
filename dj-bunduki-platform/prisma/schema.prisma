@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Download {
+  id        String   @id @default(cuid())
+  mixId     String
+  country   String?
+  device    String?
+  createdAt DateTime @default(now())
+}
+
+model MixAnalytics {
+  id        String   @id @default(cuid())
+  mixId     String
+  plays     Int      @default(0)
+  downloads Int      @default(0)
+  shares    Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Advertisement {
+  id          String   @id @default(cuid())
+  title       String
+  type        String
+  imageUrl    String?
+  adCode      String?
+  placement   String
+  clicks      Int      @default(0)
+  impressions Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Booking {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String
+  eventType String
+  eventDate String?
+  venue     String?
+  location  String?
+  budget    String?
+  message   String?
+  status    String   @default("New")
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,16 @@
+.anyiko-mobile-dashboard {
+  width: 100%;
+  padding: 16px;
+}
+
+.mobile-card {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .anyiko-mobile-dashboard {
+    padding: 10px;
+  }
+}

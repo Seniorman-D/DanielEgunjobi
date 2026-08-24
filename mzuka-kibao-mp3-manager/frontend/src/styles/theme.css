@@ -1,0 +1,32 @@
+:root {
+  --mzuka-black: #050505;
+  --mzuka-red: #e50914;
+  --mzuka-red-dark: #9b0000;
+  --mzuka-blue: #0066ff;
+  --mzuka-blue-light: #00b7ff;
+  --mzuka-white: #ffffff;
+}
+
+body {
+  background: var(--mzuka-black);
+  color: var(--mzuka-white);
+}
+
+.mzuka-card {
+  background: linear-gradient(145deg, #111111, #1b1b1b);
+  border: 1px solid rgba(0,102,255,.35);
+  box-shadow: 0 15px 40px rgba(0,0,0,.5);
+}
+
+.mzuka-primary-btn {
+  background: linear-gradient(90deg, var(--mzuka-red), var(--mzuka-blue));
+  color: white;
+}
+
+.mzuka-accent {
+  color: var(--mzuka-red);
+}
+
+.mzuka-tech {
+  color: var(--mzuka-blue-light);
+}

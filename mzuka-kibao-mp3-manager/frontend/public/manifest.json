@@ -1,0 +1,10 @@
+{
+  "name": "Anyiko File Uploader",
+  "short_name": "Anyiko",
+  "description": "Professional MP3 upload and media management system",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#111111",
+  "icons": []
+}

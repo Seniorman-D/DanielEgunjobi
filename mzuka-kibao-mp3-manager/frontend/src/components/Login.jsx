@@ -2,37 +2,37 @@ import React from 'react';
 
 export default function Login() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-700 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-black via-red-900 to-blue-900 flex items-center justify-center p-6">
       <div className="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2">
-        <div className="bg-gradient-to-br from-indigo-400 to-purple-500 p-10 text-white flex flex-col justify-center">
-          <h1 className="text-4xl font-bold text-center">MEDIA UPLOAD CLOUD</h1>
+        <div className="bg-gradient-to-br from-black via-red-700 to-blue-700 p-10 text-white flex flex-col justify-center">
+          <h1 className="text-4xl font-bold text-center">MZUKA KIBAO</h1>
           <h2 className="text-4xl font-bold mt-10">Welcome Back!</h2>
           <p className="mt-5 text-lg">
-            Upload, manage, and share your media files securely with lightning speed.
-            Log in to access your personal cloud dashboard.
+            Upload, manage, and share your music files securely with lightning speed.
+            Access your MP3 management dashboard.
           </p>
         </div>
 
         <div className="p-10 flex flex-col justify-center">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">User Login</h2>
+          <h2 className="text-3xl font-bold text-black text-center mb-8">User Login</h2>
 
           <input
-            className="border rounded-xl p-4 mb-4"
+            className="border rounded-xl p-4 mb-4 focus:border-red-600"
             placeholder="Username or Email"
             type="text"
           />
 
           <input
-            className="border rounded-xl p-4 mb-6"
+            className="border rounded-xl p-4 mb-6 focus:border-blue-600"
             placeholder="Password"
             type="password"
           />
 
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl">
+          <button className="bg-gradient-to-r from-red-600 to-blue-700 hover:opacity-90 text-white font-bold py-4 rounded-xl">
             Login Now
           </button>
 
-          <button className="text-indigo-600 mt-5">
+          <button className="text-red-600 mt-5">
             Forgot Password?
           </button>
 
@@ -42,7 +42,7 @@ export default function Login() {
             <div className="flex-1 border-t"></div>
           </div>
 
-          <button className="border rounded-xl py-3 flex items-center justify-center gap-3">
+          <button className="border rounded-xl py-3 flex items-center justify-center gap-3 hover:border-blue-600">
             Continue with Google
           </button>
         </div>

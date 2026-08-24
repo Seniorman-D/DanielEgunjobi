@@ -1,0 +1,7 @@
+{
+  "username": "Anyiko",
+  "password": "Anyiko",
+  "role": "Super Admin",
+  "forcePasswordChange": true,
+  "note": "Temporary admin credentials. Change password immediately after first login."
+}

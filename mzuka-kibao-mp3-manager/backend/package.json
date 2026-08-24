@@ -1,0 +1,17 @@
+{
+  "name": "mzuka-kibao-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Mzuka Kibao MP3 Manager",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "multer": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "fluent-ffmpeg": "latest"
+  }
+}

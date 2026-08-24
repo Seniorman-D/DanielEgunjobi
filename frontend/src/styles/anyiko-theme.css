@@ -1,0 +1,28 @@
+/* Anyiko Theme - Red Black Blue */
+:root {
+  --anyiko-red: #e50914;
+  --anyiko-black: #090909;
+  --anyiko-blue: #0066ff;
+  --anyiko-dark: #121212;
+  --anyiko-text: #ffffff;
+}
+
+.anyiko-dashboard {
+  background: var(--anyiko-black);
+  color: var(--anyiko-text);
+}
+
+.anyiko-sidebar {
+  background: linear-gradient(180deg, #090909, #121212);
+  border-right: 2px solid var(--anyiko-red);
+}
+
+.anyiko-button-primary {
+  background: var(--anyiko-red);
+  color: white;
+}
+
+.anyiko-button-secondary {
+  background: var(--anyiko-blue);
+  color: white;
+}

@@ -1,0 +1,43 @@
+-- Anyiko File Uploader Database Schema
+
+CREATE TABLE users (
+ id SERIAL PRIMARY KEY,
+ username VARCHAR(100) NOT NULL,
+ email VARCHAR(150) UNIQUE NOT NULL,
+ password_hash TEXT NOT NULL,
+ role VARCHAR(50) DEFAULT 'user',
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE files (
+ id SERIAL PRIMARY KEY,
+ user_id INTEGER REFERENCES users(id),
+ original_name TEXT NOT NULL,
+ file_name TEXT NOT NULL,
+ file_url TEXT,
+ file_type VARCHAR(50),
+ file_size BIGINT,
+ status VARCHAR(50) DEFAULT 'uploaded',
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE tags (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(100) UNIQUE NOT NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE downloads (
+ id SERIAL PRIMARY KEY,
+ file_id INTEGER REFERENCES files(id),
+ user_id INTEGER REFERENCES users(id),
+ downloaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE audit_logs (
+ id SERIAL PRIMARY KEY,
+ user_id INTEGER REFERENCES users(id),
+ action TEXT NOT NULL,
+ ip_address VARCHAR(100),
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -1,0 +1,20 @@
+/* Anyiko File Uploader responsive foundation */
+.anyiko-layout {
+  min-height: 100vh;
+  background: #050505;
+  color: white;
+}
+
+.anyiko-header {
+  padding: 20px;
+}
+
+.anyiko-content {
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .anyiko-content {
+    padding: 12px;
+  }
+}
